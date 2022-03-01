@@ -26,8 +26,11 @@ python3 bagger.py -i "C:\tmp\exemple\input_dir" -o "C:\tmp\exemple\output_dir" -
 ```
 **Description of arguments:**
 -i the path of input directory which contains all the folder you may package.
+
 -o the path of output bags
+
 -c the value of dc.identifier used in the metadata.csv file
+
 -f the prefix name of the bag. The complete name is composed with the prefix and the dc.identifier. For example, the command above will name the first bag "KEHREN_OBERSON-ARCHNUMFR_6932-0001". By default, 4 digits is used to increment the name of following bags.
 -d the path of the metadata.csv file
 -m the path of the processingMPC.xml file used for Archivematica.
