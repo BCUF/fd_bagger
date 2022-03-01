@@ -35,3 +35,38 @@ python3 bagger.py -i "C:\tmp\exemple\input_dir" -o "C:\tmp\exemple\output_dir" -
 - -s 0010 optionnal argument, if you want to define the first number of bag name incrementation.
 - -p 4 defines the number of CPU thread
 
+```
+├── bag-info.txt
+├── bagit.txt
+├── data
+│   └── skip-transfer-directory
+│       └── BAC A CREME AVEC CUILLIèRE 12-2015
+│           ├── BAC A CREME AVEC CUILLIERE TRANS.psd
+│           ├── CUILLIERE DETOUREE 9037.jpg
+│           ├── DOUBLE CREME DE LA GRUYERE.psd
+│           ├── DSC09030.ARW
+│           ├── DSC09031.ARW
+│           ├── DSC09032.ARW
+│           ├── DSC09033.ARW
+│           ├── DSC09034.ARW
+│           ├── DSC09035.ARW
+│           ├── DSC09036.ARW
+│           ├── DSC09037_1.PSD
+│           ├── DSC09037.ARW
+│           ├── DSC09037.JPG
+│           ├── DSC09037.PSD
+│           ├── DSC09037.xmp
+│           ├── DSC09038.ARW
+│           ├── DSC09039.ARW
+│           ├── DSC09040.ARW
+│           ├── DSC09041.ARW
+│           ├── DSC09042.ARW
+│           ├── DSC09043.ARW
+│           ├── DSC09044.ARW
+│           └── DSC09045.ARW
+├── manifest-md5.txt
+├── metadata
+│   └── metadata.csv
+├── processingMCP.xml
+└── tagmanifest-md5.txt
+```
