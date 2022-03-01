@@ -27,8 +27,7 @@ python3 bagger.py -i "C:\tmp\exemple\input_dir" -o "C:\tmp\exemple\output_dir" -
 **Description of arguments:**
 
 - -i the path of input directory which contains all the folder you may package.
-
--o the path of output bags
+- -o the path of output bags
 
 -c the value of dc.identifier used in the metadata.csv file
 
