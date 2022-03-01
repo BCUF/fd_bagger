@@ -22,7 +22,7 @@ pip3 install -r require.txt
 ## Run example
 
 ```bash
-python3 bagger.py -i "C:\tmp\exemple\input_dir" -o "C:\tmp\exemple\output_dir" -c ARCHNUMFR_6932 -f KEHREN_OBERSON -d "C:\tmp\exemple\metadata\metadata.csv" -m "C:\tmp\exemple\processingMCP.xml" -p 4
+python3 bagger.py -i "C:\tmp\exemple\input_dir" -o "C:\tmp\exemple\output_dir" -c ARCHNUMFR_6932 -f KEHREN_OBERSON -d "C:\tmp\exemple\metadata\metadata.csv" -m "C:\tmp\exemple\processingMCP.xml" -s 0010 -p 4
 ```
 **Description of arguments:**
 
@@ -33,4 +33,5 @@ python3 bagger.py -i "C:\tmp\exemple\input_dir" -o "C:\tmp\exemple\output_dir" -
 - -d the path of the metadata.csv file
 - -m the path of the processingMPC.xml file used for Archivematica.
 - -s 0010 optionnal argument, if you want to define the first number of bag name incrementation.
+- -p 4 defines the number of CPU thread
 
