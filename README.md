@@ -36,6 +36,7 @@ python3 bagger.py -i "C:\tmp\exemple\input_dir" -o "C:\tmp\exemple\output_dir" -
 - -p 4 defines the number of CPU thread
 
 **Bag structure**
+
 The bag structure should look like :
 
 ```
