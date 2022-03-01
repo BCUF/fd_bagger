@@ -35,6 +35,9 @@ python3 bagger.py -i "C:\tmp\exemple\input_dir" -o "C:\tmp\exemple\output_dir" -
 - -s 0010 optionnal argument, if you want to define the first number of bag name incrementation.
 - -p 4 defines the number of CPU thread
 
+**Bag structure**
+The bag structure should look like :
+
 ```
 ├── bag-info.txt
 ├── bagit.txt
