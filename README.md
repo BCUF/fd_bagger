@@ -1,6 +1,6 @@
 # fd_bagger
 
-A script to bag(using bagit) multiple directory
+A script to bag(using bagit) multiple directories
 
 ## Install
 
