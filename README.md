@@ -25,7 +25,8 @@ pip3 install -r require.txt
 python3 bagger.py -i "C:\tmp\exemple\input_dir" -o "C:\tmp\exemple\output_dir" -c ARCHNUMFR_6932 -f KEHREN_OBERSON -d "C:\tmp\exemple\metadata\metadata.csv" -m "C:\tmp\exemple\processingMCP.xml" -p 4
 ```
 **Description of arguments:**
--i the path of input directory which contains all the folder you may package.
+
+- -i the path of input directory which contains all the folder you may package.
 
 -o the path of output bags
 
