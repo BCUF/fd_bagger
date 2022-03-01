@@ -24,5 +24,6 @@ pip3 install -r require.txt
 ```bash
 python3 bagger.py -i "C:\tmp\exemple\input_dir" -o "C:\tmp\exemple\output_dir" -c ARCHNUMFR_6932 -f KEHREN_OBERSON -d "C:\tmp\exemple\metadata\metadata.json" -m "C:\tmp\exemple\processingMCP.xml" -p 4
 ```
+Explication
 
 
