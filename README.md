@@ -76,3 +76,19 @@ The bag structure should look like :
 ├── processingMCP.xml
 └── tagmanifest-md5.txt
 ```
+# Add content to an existing bag
+
+The utility updatebag let you add some content (file or directories) to an existing bag.
+
+## Run example
+
+```bash
+python3 update.py -b "C:\tmp\bag\test_bag_1" -t "C:\tmp\bag\test_bag_1\data" "C:\dev\fd_bagger" ".\updatebag.py" 
+```
+**Description of arguments:**
+
+- -b the bag to update.
+- -t the target directory inside the bag were to put the added content. Should be an absolute path.
+- elements [elements ...] the element that will be added to the path. An element can be a directory or a file. 
+  If the specified element is a directory the whole content is copied recursively.
+
