@@ -21,6 +21,7 @@ import datetime
 import logging
 import os.path
 import shutil
+import sys
 
 logger = logging.getLogger(__name__)
 
@@ -30,8 +31,8 @@ def init_log():
     time = parser.strftime("%d-%m-%Y_%H%M%S")
 
     logging.basicConfig(
-        filename=f'update_bag_{time}.log',
-        level=logging.INFO, 
+        stream = sys.stdout,
+        level=logging.WARNING, 
         format="%(asctime)s %(levelname)s %(name)s %(message)s"
     )
 
