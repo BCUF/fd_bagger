@@ -67,7 +67,7 @@ def main():
 
         if os.path.exists(obj):
             if os.path.isfile(obj):
-                shutil.copyfile(obj, args.target + os.path.sep + os.path.basename(obj))
+                shutil.copy2(obj, args.target + os.path.sep + os.path.basename(obj))
             elif os.path.isdir(obj):
                 shutil.copytree(obj, args.target + os.path.sep + os.path.basename(obj))
         else:
