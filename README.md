@@ -83,7 +83,7 @@ The utility updatebag let you add some content (file or directories) to an exist
 ## Run example
 
 ```bash
-python3 update.py -b "C:\tmp\bag\test_bag_1" -t "C:\tmp\bag\test_bag_1\data" "C:\dev\fd_bagger" ".\updatebag.py" 
+python3 updatebag.py -b "C:\tmp\bag\test_bag_1" -t "C:\tmp\bag\test_bag_1\data" "C:\dev\fd_bagger" ".\updatebag.py" 
 ```
 **Description of arguments:**
 
