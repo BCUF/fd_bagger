@@ -1,5 +1,5 @@
 ###
-# Copyright BCU Fribourg 2021
+# Copyright BCU Fribourg 2022
 # Author: nstulz
 ###
 
@@ -10,11 +10,12 @@ import os
 import shutil
 import json
 import csv
+import sys
 import pathlib
 import shutil
 from pathlib import Path
 import datetime
-
+from ui import App
 
 
 logger = logging.getLogger(__name__)
@@ -117,6 +118,11 @@ def do_mapping(input_dir, output_dir, callnumber, fond, starting_number):
             mapping.append(map_object)
 
     return mapping
+
+def run(input, output, callnumber, fond, startingnumber, metadata, mcp, process):
+    mapping = do_mapping(input, output, callnumber, fond, startingnumber)
+    bag(mapping, input, output, callnumber, fond, metadata, mcp, process)
+
 
 def bag(mapping, input_dir, output_dir, callnumber, fond, metadata, mcp, process):
 
@@ -226,40 +232,47 @@ def bag(mapping, input_dir, output_dir, callnumber, fond, metadata, mcp, process
 
 def main():
 
-    parser = argparse.ArgumentParser(description='This program allows you to bag some dirs')
-    optional = parser._action_groups.pop()
-    required = parser.add_argument_group('required arguments')
+    # if no args are set it will use GUI
+    if len(sys.argv) == 1:
 
-    required.add_argument('-i','--input', type=str,
-        help='The input file path', required=True)
-    required.add_argument('-o','--output', type=str,
-        help='The output directory', required=True)
-    required.add_argument('-c','--callnumber', type=str,
-        help='The callnumber, example: ARCHNUMFR_1664', required=True)
+        app = App()
+        app.mainloop()
 
-    optional.add_argument('-f','--fond', type=str,
-        help="The fund's name", required=False, default="")
-    optional.add_argument('-s','--startingnumber', type=int,
-        help='Set the starting number', default=1)
-    optional.add_argument('-d','--metadata', type=str,
-        help='Set a metadata csv or json file', default=None)
-    optional.add_argument('-m','--mcp', type=str,
-        help='Set a mcp file', default=None)
-    optional.add_argument('-p','--process', type=int,
-        help='Set the number of process', default=1)
+    # if args are set it will use the args
+    else:
 
-    parser._action_groups.append(optional)
+        parser = argparse.ArgumentParser(description='This program allows you to bag some dirs')
+        optional = parser._action_groups.pop()
+        required = parser.add_argument_group('required arguments')
 
-    args = parser.parse_args()
+        required.add_argument('-i','--input', type=str,
+            help='The input file path', required=True)
+        required.add_argument('-o','--output', type=str,
+            help='The output directory', required=True)
+        required.add_argument('-c','--callnumber', type=str,
+            help='The callnumber, example: ARCHNUMFR_1664', required=True)
 
-    init_log(args.callnumber)
+        optional.add_argument('-f','--fond', type=str,
+            help="The fund's name", required=False, default="")
+        optional.add_argument('-s','--startingnumber', type=int,
+            help='Set the starting number', default=1)
+        optional.add_argument('-d','--metadata', type=str,
+            help='Set a metadata csv or json file', default=None)
+        optional.add_argument('-m','--mcp', type=str,
+            help='Set a mcp file', default=None)
+        optional.add_argument('-p','--process', type=int,
+            help='Set the number of process', default=1)
 
-    mapping = do_mapping(args.input, args.output, args.callnumber, args.fond, args.startingnumber)
+        parser._action_groups.append(optional)
 
-    bag(mapping, args.input, args.output, args.callnumber, args.fond, args.metadata, args.mcp, args.process)
+        args = parser.parse_args()
 
-    logging.info("Terminated")
-    print("Terminated")
+        init_log(args.callnumber)
+
+        run(args.input, args.output, args.callnumber, args.fond, args.startingnumber, args.metadata, args.mcp, args.process)
+
+        logging.info("Terminated")
+        print("Terminated")
 
 if __name__ == "__main__":
     main()
