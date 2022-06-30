@@ -1,3 +1,8 @@
+###
+# Copyright BCU Fribourg 2022
+# Author: nstulz
+###
+
 from genericpath import exists
 from json import load
 import tkinter as tk
@@ -6,6 +11,10 @@ import re
 from tkinter import filedialog
 import os
 import json
+import logging
+from logic import run
+
+logger = logging.getLogger(__name__)
 
 class App(tk.Tk):
     def __init__(self):
@@ -33,9 +42,16 @@ class App(tk.Tk):
         self.gui()
 
     def start_running(self):
-        print("start_running")
-        # run(self.input_dir_value, self.output_dir_value, self.callnumber_value, self.fond_value, self.starting_number_value, self.metadata_value, self.mcp_value, self.process_value)
-
+        run(self.input_dir_value.get(), 
+            self.output_dir_value.get(), 
+            self.callnumber_value.get(), 
+            self.fond_value.get(), 
+            self.starting_number_value.get(), 
+            self.metadata_value.get(), 
+            self.mcp_value.get(), 
+            self.process_value.get())
+        self.save()
+        
 
     def load_save(self):
         with open("save.json", "r", encoding='utf-8') as json_file:
@@ -48,6 +64,8 @@ class App(tk.Tk):
             self.metadata_value.set(data["metadata"])
             self.mcp_value.set(data["mcp"])
             self.process_value.set(data["process"])
+            logger.info("save file was loaded")
+
     
     
     def save(self):
@@ -61,7 +79,8 @@ class App(tk.Tk):
         data["mcp"] = self.mcp_value.get()
         data["process"] = self.process_value.get()
         with open("save.json", "w", encoding='utf-8') as json_file:
-            json.dump(data, json_file)
+            json.dump(data, json_file, indent=4)
+            logger.info("saved")
 
     def print_state(self):
         print(f"input dir: {self.input_dir_value.get()}")

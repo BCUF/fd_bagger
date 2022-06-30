@@ -1,11 +1,10 @@
 {
-    "input_dir": "C:\\dev\\projet\\fd_bagger",
-    "output_dir": "C:\\dev\\projet\\fd_bagger\\bag_test",
-    "callnumber":  "",
-    "fond": "",
-    "starting_number": 12,
-    "metadata":"",
+    "input_dir": "C:\\dev\\projet\\fd_bagger\\bag_test\\input_test",
+    "output_dir": "C:\\dev\\projet\\fd_bagger\\bag_test\\output_test",
+    "callnumber": "ARCHNUMFR",
+    "fond": "KEHREN",
+    "starting_number": 8,
+    "metadata": "",
     "mcp": "",
-    "process": 5
-}    
-    
+    "process": 4
+}
