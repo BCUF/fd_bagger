@@ -10,6 +10,8 @@ __pycache__/
 
 .vscode
 
+bag_test/
+
 # Distribution / packaging
 .Python
 build/
