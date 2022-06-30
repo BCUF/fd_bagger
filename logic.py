@@ -10,12 +10,9 @@ import pathlib
 import shutil
 import csv
 import bagit
+from constant import *
 
 logger = logging.getLogger(__name__)
-
-bag_info = {
-    "Source-Organization": "Bibliothèque_Universitaire_Cantonale_de_Fribourg"
-}
 
 def run(input, output, callnumber, fond, startingnumber, metadata, mcp, process):
     mapping = do_mapping(input, output, callnumber, fond, startingnumber)
@@ -134,7 +131,7 @@ def bag(mapping, input_dir, output_dir, callnumber, fond, metadata, mcp, process
 
                 logger.info(f"Copying: {current_dir} in {data_dir}")
 
-                bagit.make_bag(m["output"], bag_info=bag_info,  checksums=["md5"], processes=process)
+                bagit.make_bag(m["output"], bag_info=BAG_INFO,  checksums=["md5"], processes=process)
 
                 if metadata:
 
