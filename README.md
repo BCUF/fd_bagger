@@ -26,3 +26,11 @@ python3 bagger.py -i "C:\tmp\exemple\input_dir" -o "C:\tmp\exemple\output_dir" -
 ```
 
 
+## Pyinstaller
+
+# works on windows 
+```bash
+pyinstaller --noconsole --onefile bagger.py
+```
+the exe will be in the "./dist" folder
+

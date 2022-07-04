@@ -2,10 +2,10 @@
 # Copyright BCU Fribourg 2022
 # Author: nstulz
 ###
-
+VERSION = "1.0.0"
 # UI
-WINDOW_TITLE    = "BCUF FD_BAGGER"
-WINDOW_SIZE     = "700x350"
+WINDOW_TITLE    = f"BCUF FD_BAGGER ({VERSION})"
+WINDOW_SIZE     = "900x900" #"700x350"
 BAG_BTN_TXT     = "BAG"
 AUTO_SAVE_FILE  = "autosave.json"
 PAD_X           = 5

@@ -6,7 +6,8 @@
 from genericpath import exists
 from json import load
 import tkinter as tk
-from tkinter import DISABLED, E, W, ttk
+from tkinter import DISABLED, E, END, W, ttk
+from tkinter.scrolledtext import ScrolledText
 import re
 from tkinter import filedialog
 import os
@@ -36,6 +37,9 @@ class App(tk.Tk):
 
         self.run_btn = ttk.Button(self, text=BAG_BTN_TXT, state=DISABLED, command=self.start_running)
 
+        # self.message = tk.StringVar()
+        self.log_text = ScrolledText(self, state='disabled')
+
         if os.path.exists(AUTO_SAVE_FILE):
             self.load_save()
             self.validate()
@@ -43,7 +47,9 @@ class App(tk.Tk):
         self.build_gui()
 
     def start_running(self):
+        
         self.run_btn['state'] = tk.DISABLED
+
         run(self.input_dir_value.get(), 
             self.output_dir_value.get(), 
             self.callnumber_value.get(), 
@@ -167,8 +173,7 @@ class App(tk.Tk):
                 self.metadata_value.set(file_path)
                 self.validate()       
         metadata_label = ttk.Label(self, text="Metadata file: ").grid(column=0, row=4, padx=PAD_X, pady=PAD_Y, sticky=E)
-        metadata_btn = ttk.Button(self, text=BROWSE_BTN_TEXT, command=open_metadata_file)
-        metadata_btn.grid(column=2, row=4, padx=PAD_X, pady=PAD_Y, sticky=E)
+        metadata_btn = ttk.Button(self, text=BROWSE_BTN_TEXT, command=open_metadata_file).grid(column=2, row=4, padx=PAD_X, pady=PAD_Y, sticky=E)
         metadata_value_label = ttk.Label(self, textvariable=self.metadata_value).grid(column=1, row=4, padx=PAD_X, pady=PAD_Y)
 
         # mcp
@@ -179,8 +184,7 @@ class App(tk.Tk):
                 self.mcp_value.set(file_path)
                 self.validate()       
         mcp_label = ttk.Label(self, text="MCP file: ").grid(column=0, row=5, padx=PAD_X, pady=PAD_Y, sticky=E)
-        mcp_btn = ttk.Button(self, text=BROWSE_BTN_TEXT, command=open_MCP_file)
-        mcp_btn.grid(column=2, row=5, padx=PAD_X, pady=PAD_Y, sticky=E)
+        mcp_btn = ttk.Button(self, text=BROWSE_BTN_TEXT, command=open_MCP_file).grid(column=2, row=5, padx=PAD_X, pady=PAD_Y, sticky=E)
         mcp_value_label = ttk.Label(self, textvariable=self.mcp_value).grid(column=1, row=5, padx=PAD_X, pady=PAD_Y)
 
 
@@ -200,6 +204,44 @@ class App(tk.Tk):
         np_label = ttk.Label(self, text="Process number: ").grid(column=0, row=7, padx=PAD_X, pady=PAD_Y, sticky=E)
         np_entry = ttk.Spinbox(self, from_=NP_MIN_VALUE, to=NP_MAX_VALUE, textvariable=self.process_value).grid(column=1, row=7, padx=PAD_X, pady=PAD_Y, sticky=E)
 
-
         # run button
         self.run_btn.grid(column=3, row=8, padx=PAD_X, pady=PAD_Y)
+
+        # text_label = ttk.Label(self, textvariable=self.message).grid(column=1, row=9, columnspan=3, padx=PAD_X, pady=PAD_Y)
+        # self.message.set("MESSAGE TEST")
+        
+        self.log_text.grid(column=1, row=10, columnspan=3, padx=PAD_X, pady=PAD_Y)
+
+        # Create textLogger
+        text_handler = TextHandler(self.log_text)
+
+        # Add the handler to logger
+        logger = logging.getLogger()
+        logger.addHandler(text_handler)
+
+        # # Log some messages
+        # logger.debug('debug message')
+        # logger.info('info message')
+        # logger.warn('warn message')
+        # logger.error('error message')
+        # logger.critical('critical message')
+
+
+class TextHandler(logging.Handler):
+    """This class allows you to log to a Tkinter Text or ScrolledText widget"""
+    def __init__(self, text):
+        # run the regular Handler __init__
+        logging.Handler.__init__(self)
+        # Store a reference to the Text it will log to
+        self.text = text
+
+    def emit(self, record):
+        msg = self.format(record)
+        def append():
+            self.text.configure(state='normal')
+            self.text.insert(END, msg + '\n')
+            self.text.configure(state='disabled')
+            # Autoscroll to the bottom
+            self.text.yview(END)
+        # This is necessary because we can't modify the Text from other threads
+        self.text.after(0, append)
