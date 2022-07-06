@@ -15,6 +15,7 @@ import json
 import logging
 from logic import run
 from constant import *
+from tkinter import messagebox
 
 logger = logging.getLogger(__name__)
 
@@ -37,7 +38,6 @@ class App(tk.Tk):
 
         self.run_btn = ttk.Button(self, text=BAG_BTN_TXT, state=DISABLED, command=self.start_running)
 
-        # self.message = tk.StringVar()
         self.log_text = ScrolledText(self, state='disabled')
 
         if os.path.exists(AUTO_SAVE_FILE):
@@ -47,6 +47,19 @@ class App(tk.Tk):
         self.build_gui()
 
     def start_running(self):
+
+        # check if the lockfile is present or not
+        mapping_file_name = f"{self.callnumber_value.get()}_mapping_lock.json"
+        full_path = f"{os.getcwd()}{os.path.sep}{mapping_file_name}"
+        if os.path.isfile(full_path):
+            message = f"{full_path} all ready exists. You have to erase it manually if you want to restart completely, do you want to continue?"
+            logger.info(message)
+            answer = messagebox.askyesno(title='confirmation',
+                        message=message)
+            if not answer:
+                logger.info("Stopped by user")
+                return
+
         
         self.run_btn['state'] = tk.DISABLED
 
@@ -58,8 +71,10 @@ class App(tk.Tk):
             self.metadata_value.get(), 
             self.mcp_value.get(), 
             self.process_value.get())
-        self.save()
+        
         self.run_btn['state'] = tk.NORMAL
+        self.save()
+        messagebox.showinfo("Infos", "Finish")
         
 
     def load_save(self):
@@ -73,7 +88,7 @@ class App(tk.Tk):
             self.metadata_value.set(data["metadata"])
             self.mcp_value.set(data["mcp"])
             self.process_value.set(data["process"])
-            logger.info("save file was loaded")
+            logger.info(f"{AUTO_SAVE_FILE } loaded")
 
     
     
@@ -89,7 +104,7 @@ class App(tk.Tk):
         data["process"] = self.process_value.get()
         with open(AUTO_SAVE_FILE, "w", encoding='utf-8') as json_file:
             json.dump(data, json_file, indent=4)
-            logger.info("saved")
+            logger.info(f"saved in {AUTO_SAVE_FILE}")
 
     def print_state(self):
         print(f"input dir: {self.input_dir_value.get()}")
@@ -206,11 +221,8 @@ class App(tk.Tk):
 
         # run button
         self.run_btn.grid(column=3, row=8, padx=PAD_X, pady=PAD_Y)
-
-        # text_label = ttk.Label(self, textvariable=self.message).grid(column=1, row=9, columnspan=3, padx=PAD_X, pady=PAD_Y)
-        # self.message.set("MESSAGE TEST")
         
-        self.log_text.grid(column=1, row=10, columnspan=3, padx=PAD_X, pady=PAD_Y)
+        self.log_text.grid(column=1, row=9, columnspan=3, padx=PAD_X, pady=PAD_Y)
 
         # Create textLogger
         text_handler = TextHandler(self.log_text)
@@ -219,20 +231,12 @@ class App(tk.Tk):
         logger = logging.getLogger()
         logger.addHandler(text_handler)
 
-        # # Log some messages
-        # logger.debug('debug message')
-        # logger.info('info message')
-        # logger.warn('warn message')
-        # logger.error('error message')
-        # logger.critical('critical message')
 
 
 class TextHandler(logging.Handler):
     """This class allows you to log to a Tkinter Text or ScrolledText widget"""
     def __init__(self, text):
-        # run the regular Handler __init__
         logging.Handler.__init__(self)
-        # Store a reference to the Text it will log to
         self.text = text
 
     def emit(self, record):
@@ -241,7 +245,5 @@ class TextHandler(logging.Handler):
             self.text.configure(state='normal')
             self.text.insert(END, msg + '\n')
             self.text.configure(state='disabled')
-            # Autoscroll to the bottom
             self.text.yview(END)
-        # This is necessary because we can't modify the Text from other threads
         self.text.after(0, append)

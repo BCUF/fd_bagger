@@ -65,7 +65,6 @@ def main():
         run(args.input, args.output, args.callnumber, args.fond, args.startingnumber, args.metadata, args.mcp, args.process)
 
         logging.info("Terminated")
-        print("Terminated")
 
 if __name__ == "__main__":
     main()

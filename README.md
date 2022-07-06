@@ -5,7 +5,7 @@ A script to bag(using bagit) multiple directory
 ## Install
 
 Requires:
-* Python >= 3.6
+* Python >= 3.10
 * Check the version running python --version or python3 --version
 
 ```bash
