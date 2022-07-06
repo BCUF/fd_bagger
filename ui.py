@@ -48,6 +48,8 @@ class App(tk.Tk):
 
     def start_running(self):
 
+        self.save()
+
         # check if the lockfile is present or not
         mapping_file_name = f"{self.callnumber_value.get()}_mapping_lock.json"
         full_path = f"{os.getcwd()}{os.path.sep}{mapping_file_name}"
@@ -73,7 +75,7 @@ class App(tk.Tk):
             self.process_value.get())
         
         self.run_btn['state'] = tk.NORMAL
-        self.save()
+
         messagebox.showinfo("Infos", "Finish")
         
 

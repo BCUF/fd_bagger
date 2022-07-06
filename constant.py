@@ -5,7 +5,7 @@
 
 VERSION = "1.0.0"
 # UI
-WINDOW_TITLE    = f"© BCUF FD_BAGGER ({VERSION})"
+WINDOW_TITLE    = f"BCUF FD_BAGGER ({VERSION})"
 WINDOW_SIZE     = "900x750"
 BAG_BTN_TXT     = "BAG"
 AUTO_SAVE_FILE  = "autosave.json"
