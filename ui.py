@@ -172,7 +172,7 @@ class App(tk.Tk):
             self.validate()            
         self.callnumber_value.trace_add('write', cn_callback)
         cn_label = ttk.Label(self, text="Callnumber * : ").grid(column=0, row=2, padx=PAD_X, pady=PAD_Y, sticky=E)
-        cn_entry = ttk.Entry(self, textvariable=self.callnumber_value).grid(column=1, row=2, padx=PAD_X, pady=PAD_Y, sticky=E)
+        cn_entry = ttk.Entry(self, width=ENTRY_WIDTH, textvariable=self.callnumber_value).grid(column=1, row=2, padx=PAD_X, pady=PAD_Y, sticky=E)
         
         # Fond
         def fd_callback(var, index, mode):
@@ -180,7 +180,7 @@ class App(tk.Tk):
             self.validate()       
         self.fond_value.trace_add('write', fd_callback)
         fd_label = ttk.Label(self, text="Fond: ").grid(column=0, row=3, padx=PAD_X, pady=PAD_Y, sticky=E)
-        fd_entry = ttk.Entry(self, textvariable=self.fond_value).grid(column=1, row=3, padx=PAD_X, pady=PAD_Y, sticky=E)
+        fd_entry = ttk.Entry(self, width=ENTRY_WIDTH, textvariable=self.fond_value).grid(column=1, row=3, padx=PAD_X, pady=PAD_Y, sticky=E)
 
         # metadata
         def open_metadata_file():
