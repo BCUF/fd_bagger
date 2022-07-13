@@ -9,6 +9,7 @@ import sys
 import datetime
 from ui import App
 from logic import run
+from multiprocessing import Process, freeze_support
 
 
 logger = logging.getLogger(__name__)
@@ -67,4 +68,8 @@ def main():
         logging.info("Terminated")
 
 if __name__ == "__main__":
-    main()
+    """
+    We need to use multiprocessing.freeze_support() when we produce a Windows executable with PyInstaller.
+    """
+    freeze_support()
+    Process(target=main).start()
