@@ -1,8 +1,8 @@
 {
     "input_dir": "C:\\dev\\projet\\fd_bagger\\bag_test\\input_test",
     "output_dir": "C:\\dev\\projet\\fd_bagger\\bag_test\\output_test",
-    "callnumber": "test2",
-    "fond": "test2",
+    "callnumber": "test3",
+    "fond": "test3",
     "starting_number": 10,
     "metadata": "C:\\dev\\projet\\fd_bagger\\bag_test\\metadata.csv",
     "mcp": "C:\\dev\\projet\\fd_bagger\\bag_test\\mcp_test.xml",

@@ -71,5 +71,8 @@ if __name__ == "__main__":
     """
     We need to use multiprocessing.freeze_support() when we produce a Windows executable with PyInstaller.
     """
-    freeze_support()
-    Process(target=main).start()
+    if sys.platform.startswith('win'):
+        freeze_support()
+        Process(target=main).start()
+    else:
+        main()

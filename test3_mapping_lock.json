@@ -1,0 +1,30 @@
+[
+    {
+        "input": "C:\\dev\\projet\\fd_bagger\\bag_test\\input_test\\1er Communion CHATEL 2007 FINAL",
+        "output": "C:\\dev\\projet\\fd_bagger\\bag_test\\output_test\\TEST3-TEST3-0010",
+        "status": "SUCCESS",
+        "dir_name": "TEST3-TEST3-0010",
+        "dc_id": "TEST3-0010"
+    },
+    {
+        "input": "C:\\dev\\projet\\fd_bagger\\bag_test\\input_test\\1er Communion CHATEL 2008",
+        "output": "C:\\dev\\projet\\fd_bagger\\bag_test\\output_test\\TEST3-TEST3-0011",
+        "status": "SUCCESS",
+        "dir_name": "TEST3-TEST3-0011",
+        "dc_id": "TEST3-0011"
+    },
+    {
+        "input": "C:\\dev\\projet\\fd_bagger\\bag_test\\input_test\\1er Communion REMAUFENS 2008",
+        "output": "C:\\dev\\projet\\fd_bagger\\bag_test\\output_test\\TEST3-TEST3-0012",
+        "status": "SUCCESS",
+        "dir_name": "TEST3-TEST3-0012",
+        "dc_id": "TEST3-0012"
+    },
+    {
+        "input": "C:\\dev\\projet\\fd_bagger\\bag_test\\input_test\\1er communion REMAUFENS 07",
+        "output": "C:\\dev\\projet\\fd_bagger\\bag_test\\output_test\\TEST3-TEST3-0013",
+        "status": "SUCCESS",
+        "dir_name": "TEST3-TEST3-0013",
+        "dc_id": "TEST3-0013"
+    }
+]
