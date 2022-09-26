@@ -5,7 +5,7 @@ A script to bag(using bagit) multiple directories
 ## Install
 
 Requires:
-* Python >= 3.6
+* Python >= 3.10
 * Check the version running python --version or python3 --version
 
 ```bash
@@ -91,4 +91,12 @@ python3 updatebag.py -b "C:\tmp\bag\test_bag_1" -t "C:\tmp\bag\test_bag_1\data" 
 - -t the target directory inside the bag were to put the added content. Should be an absolute path.
 - elements [elements ...] the element that will be added to the path. An element can be a directory or a file. 
   If the specified element is a directory the whole content is copied recursively.
+
+## Pyinstaller
+
+# works on windows 
+```bash
+pyinstaller --noconsole --onefile bagger.py
+```
+the exe will be in the "./dist" folder
 
