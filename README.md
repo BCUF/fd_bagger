@@ -20,7 +20,11 @@ pip3 install -r require.txt
 ```
 
 ## Run example
-
+* Lauch the gui with cmd (no args required)
+```bash
+python3 bagger.py
+```
+* Lauch without the gui
 ```bash
 python3 bagger.py -i "C:\tmp\exemple\input_dir" -o "C:\tmp\exemple\output_dir" -c ARCHNUMFR_6932 -f KEHREN_OBERSON -d "C:\tmp\exemple\metadata\metadata.csv" -m "C:\tmp\exemple\processingMCP.xml" -s 0010 -p 4
 ```
